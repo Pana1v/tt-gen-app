@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Timetable Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>University Timetable Manager</h1>
+
+    <!-- Main Menu -->
+    <div id="main-menu">
+        <button id="update-database">Update Database</button>
+        <button id="generate-timetable">Generate Timetable</button>
+        <button id="view-database">View Database</button>
+    </div>
+
+    <!-- Update Database Form -->
+    <div id="update-database-form" style="display: none;">
+        <h2>Update Database</h2>
+        <form id="class-form">
+            <label for="course-name">Course Name:</label>
+            <input type="text" id="course-name" placeholder="Enter Course Name" required><br>
+
+            <label for="professor">Professor:</label>
+            <input type="text" id="professor" placeholder="Enter Professor's Name" required><br>
+
+            <label for="class-type">Class Type:</label>
+            <select id="class-type" required>
+                <option value="Lecture" selected>Lecture</option>
+                <option value="Lab">Lab</option>
+                <option value="Tutorial">Tutorial</option>
+            </select><br>
+
+            <label for="venue-preference">Preferred Venue:</label>
+            <select id="venue-preference" required>
+                <option value="Classroom" selected>Classroom</option>
+                <option value="Lecture Hall">Lecture Hall</option>
+            </select><br>
+            
+            <label for="preferred-day">Preferred Day:</label>
+            <select id="preferred-day" required>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select><br>
+            <label for="course-type">Course Type:</label>
+            <select id="course-type" required>
+                <option value="Core Course">Core Course</option>
+                <option value="Department Elective">Department Elective</option>
+                <option value="Open Elective">Open Elective</option>
+                <option value="NSO/NSS">NSO/NSS</option>
+
+            </select>
+            <br>
+            <label for="preferred-start-time">Preferred Starting Time:</label>
+            <select id="preferred-start-time" required>
+                <option value="" disabled selected>Select Time</option>
+                <option value="8:00">8:00 AM</option>
+                <option value="9:00">9:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="14:00">2:00 PM</option>
+                <option value="15:00">3:00 PM</option>
+                <option value="16:00">4:00 PM</option>
+                <option value="17:00">5:00 PM</option>
+                <option value="18:00">6:00 PM</option>
+            </select><br>
+
+
+
+            <label for="student-count">Number of Students:</label>
+            <input type="number" id="student-count" placeholder="E.g. 50" min="1" value="60" required><br>
+
+            <label for="hours">Duration (hours):</label>
+            <input type="number" id="hours" placeholder="E.g. 1" min="1" max="4" value="1" required><br>
+
+            <button type="submit">Add Class</button>
+        </form>
+        <button id="back-from-update">Back</button>
+    </div>
+
+    <!-- Generate Timetable Form -->
+    <div id="generate-timetable-form" style="display: none;">
+        <h2>Generate Timetable</h2>
+        <form id="generate-form">
+            <!-- Submission Button -->
+            <button type="submit">Generate</button>
+        </form>
+            <!-- Semester Input -->
+            <!-- <label for="semester">Semester:</label>
+            <input type="text" id="semester" placeholder="Enter Semester" required><br>
+    
+            Department Input -->
+            <!-- <label for="department">Department:</label>
+            <input type="text" id="department" placeholder="Enter Department" required><br>
+     -->
+            <!-- Option to Avoid 12-1 Slot -->
+            <label>Avoid 12-1 PM Slot:</label><br>
+            <input type="checkbox" id="avoid-12-1">
+            <label for="avoid-12-1">Yes</label><br>
+    
+            <!-- Option to Avoid Irregularly Distributed Classes (Consecutive Classes) -->
+            <label>Avoid Irregularly Distributed Classes (All Classes Consecutively):</label><br>
+            <input type="checkbox" id="consecutive-classes">
+            <label for="consecutive-classes">Yes</label><br>
+    
+            <!-- Option to Free Up Friday -->
+            <label>Free Up Friday:</label><br>
+            <input type="checkbox" id="free-friday">
+            <label for="free-friday">Yes</label><br>
+    
+            <!-- Dropdown to Prioritize When to Finish Classes -->
+            <label for="finish-priority">Prioritize When to Finish Classes:</label>
+            <select id="finish-priority" required>
+                <option value="" disabled>Select Priority</option>
+                <option value="early" selected>Finish Early in the Day</option>
+                <option value="late">Finish Late in the Day</option>
+            </select><br>
+    
+            <!-- Tick Box to Schedule Open Electives in 12-1 Slot -->
+            <label>Schedule Open Electives in 12-1 PM Slot:</label><br>
+            <input type="checkbox" id="open-electives">
+            <label for="open-electives">Yes</label><br>
+    
+            <!-- Tick Box to Schedule Tutorials in 5-6 PM Slot -->
+            <label>Schedule Tutorials in 5-6 PM Slot:</label><br>
+            <input type="checkbox" id="tutorials-5-6">
+            <label for="tutorials-5-6">Yes</label><br>
+    
+            
+    
+        <!-- Back Button -->
+        <button id="back-from-generate">Back</button>
+    </div>
+    
+
+    <!-- View Database -->
+    <div id="view-database-form" style="display: none;">
+        <h2>View Database</h2>
+        <button id="fetch-database">Fetch Database</button>
+        <div id="database-output"></div>
+        <button id="back-from-view-database">Back</button>
+    </div>
+
+
+    <script src="renderer.js"></script>
+<style>
+    table {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    text-align: left;
+}
+
+    </style>
+</body>
+</html>
