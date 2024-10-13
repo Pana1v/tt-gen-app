@@ -1,0 +1,27 @@
+Course Name,Instructor Name,Type,Location,Start Time,Day,Students,Duration
+EE483,Sanjoy Kumar Parida,Lecture,Classroom,10:00,Wednesday,60,1
+EE483,Sanjoy Kumar Parida,Lecture,R-109,10:00,Friday,60,1
+CS483,Sanjoy Kumar Parida,Lecture,R-109,12:00,Monday,60,1
+CS383,Sanjoy Kumar Parida,Lecture,Classroom,12:00,Tuesday,60,1
+EE483,Sanjoy Kumar Parida,Tutorial,Classroom,14:00,Monday,30,1
+CS483,Sanjoy Kumar Parida,Tutorial,Classroom,14:00,Tuesday,30,1
+CS384,Anjali Verma,Lecture,Lab A,09:00,Thursday,40,1
+CS384,Anjali Verma,Lecture,Classroom,10:00,Friday,60,1
+CS383,Sanjoy Kumar Parida,Lab,Laboratory,15:00,Wednesday,30,2
+EE483,Sanjoy Kumar Parida,Lab,Laboratory,15:00,Thursday,30,2
+CS483,Sanjoy Kumar Parida,Lab,Laboratory,15:00,Friday,30,2
+ME102,Aditi Sharma,Lecture,Classroom,08:00,Monday,50,1
+ME110,Ravi Singh,Lecture,Classroom,09:00,Tuesday,50,1
+ME100,Sita Patel,Lecture,Classroom,11:00,Thursday,50,1
+CE202,Anil Kumar,Tutorial,Classroom,13:00,Monday,25,1
+CE202,Anil Kumar,Laboratory,Laboratory,14:00,Wednesday,25,2
+ME110,Aditi Sharma,Laboratory,Laboratory,15:00,Thursday,40,2
+CS482,Sanjoy Kumar Parida,Lecture,Classroom,08:00,Tuesday,60,1
+CS384,Anjali Verma,Tutorial,Classroom,11:00,Friday,30,1
+EE485,John Doe,Lecture,Auditorium,11:00,Monday,200,1
+ME101,Sita Patel,Lecture,R-200,11:00,Wednesday,50,1
+CS385,Anjali Verma,Lecture,Online,14:00,Tuesday,100,1
+CS386,Ravi Singh,Tutorial,Meeting Room,09:00,Thursday,20,1
+CS387,Sanjay Mishra,Lecture,LT101,12:00,Monday,80,1
+EE486,Anjali Verma,Laboratory,Lab B,13:00,Wednesday,25,2
+ME103,Ravi Kumar,Lecture,Seminar Hall,10:00,Tuesday,75,1

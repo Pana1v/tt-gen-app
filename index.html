@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Timetable Generator</title>
+    <title>University Timetable Manager</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,6 +14,7 @@
         <button id="update-database">Update Database</button>
         <button id="generate-timetable">Generate Timetable</button>
         <button id="view-database">View Database</button>
+        <button id="export-ical">Export .ical</button> <!-- New button for exporting iCal file -->
     </div>
 
     <!-- Update Database Form -->
@@ -38,7 +39,7 @@
                 <option value="Classroom" selected>Classroom</option>
                 <option value="Lecture Hall">Lecture Hall</option>
             </select><br>
-            
+
             <label for="preferred-day">Preferred Day:</label>
             <select id="preferred-day" required>
                 <option value="Monday">Monday</option>
@@ -49,15 +50,15 @@
                 <option value="Saturday">Saturday</option>
                 <option value="Sunday">Sunday</option>
             </select><br>
+
             <label for="course-type">Course Type:</label>
             <select id="course-type" required>
                 <option value="Core Course">Core Course</option>
                 <option value="Department Elective">Department Elective</option>
                 <option value="Open Elective">Open Elective</option>
                 <option value="NSO/NSS">NSO/NSS</option>
+            </select><br>
 
-            </select>
-            <br>
             <label for="preferred-start-time">Preferred Starting Time:</label>
             <select id="preferred-start-time" required>
                 <option value="" disabled selected>Select Time</option>
@@ -72,8 +73,6 @@
                 <option value="17:00">5:00 PM</option>
                 <option value="18:00">6:00 PM</option>
             </select><br>
-
-
 
             <label for="student-count">Number of Students:</label>
             <input type="number" id="student-count" placeholder="E.g. 50" min="1" value="60" required><br>
@@ -90,56 +89,37 @@
     <div id="generate-timetable-form" style="display: none;">
         <h2>Generate Timetable</h2>
         <form id="generate-form">
-            <!-- Submission Button -->
-            <button type="submit">Generate</button>
-        </form>
-            <!-- Semester Input -->
-            <!-- <label for="semester">Semester:</label>
-            <input type="text" id="semester" placeholder="Enter Semester" required><br>
-    
-            Department Input -->
-            <!-- <label for="department">Department:</label>
-            <input type="text" id="department" placeholder="Enter Department" required><br>
-     -->
-            <!-- Option to Avoid 12-1 Slot -->
             <label>Avoid 12-1 PM Slot:</label><br>
             <input type="checkbox" id="avoid-12-1">
             <label for="avoid-12-1">Yes</label><br>
-    
-            <!-- Option to Avoid Irregularly Distributed Classes (Consecutive Classes) -->
+
             <label>Avoid Irregularly Distributed Classes (All Classes Consecutively):</label><br>
             <input type="checkbox" id="consecutive-classes">
             <label for="consecutive-classes">Yes</label><br>
-    
-            <!-- Option to Free Up Friday -->
+
             <label>Free Up Friday:</label><br>
             <input type="checkbox" id="free-friday">
             <label for="free-friday">Yes</label><br>
-    
-            <!-- Dropdown to Prioritize When to Finish Classes -->
+
             <label for="finish-priority">Prioritize When to Finish Classes:</label>
             <select id="finish-priority" required>
                 <option value="" disabled>Select Priority</option>
                 <option value="early" selected>Finish Early in the Day</option>
                 <option value="late">Finish Late in the Day</option>
             </select><br>
-    
-            <!-- Tick Box to Schedule Open Electives in 12-1 Slot -->
+
             <label>Schedule Open Electives in 12-1 PM Slot:</label><br>
             <input type="checkbox" id="open-electives">
             <label for="open-electives">Yes</label><br>
-    
-            <!-- Tick Box to Schedule Tutorials in 5-6 PM Slot -->
+
             <label>Schedule Tutorials in 5-6 PM Slot:</label><br>
             <input type="checkbox" id="tutorials-5-6">
             <label for="tutorials-5-6">Yes</label><br>
-    
-            
-    
-        <!-- Back Button -->
+
+            <button type="submit">Generate</button>
+        </form>
         <button id="back-from-generate">Back</button>
     </div>
-    
 
     <!-- View Database -->
     <div id="view-database-form" style="display: none;">
@@ -149,22 +129,44 @@
         <button id="back-from-view-database">Back</button>
     </div>
 
+    <!-- Export .ical Form -->
+    <div id="export-ical-form" style="display: none;">
+        <h2>Export .ical</h2>
+        <label for="year-select">Select Year:</label>
+        <select id="year-select">
+            <option value="1st-year">1st Year</option>
+            <option value="2nd-year">2nd Year</option>
+            <option value="3rd-year">3rd Year</option>
+            <option value="4th-year">4th Year</option>
+        </select><br>
+
+        <label for="batch-select">Select Batch:</label>
+        <select id="batch-select">
+            <option value="A">Batch A</option>
+            <option value="B">Batch B</option>
+            <option value="C">Batch C</option>
+            <option value="D">Batch D</option>
+        </select><br>
+
+        <button id="export-ical-file">Export .ical File</button>
+        <button id="back-from-export">Back</button>
+    </div>
 
     <script src="renderer.js"></script>
+
 <style>
     table {
-    border: 1px solid #ddd;
-    border-collapse: collapse;
-}
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+    }
 
-th {
-    background-color: #f2f2f2;
-}
+    th {
+        background-color: #f2f2f2;
+    }
 
-td {
-    text-align: left;
-}
-
-    </style>
+    td {
+        text-align: left;
+    }
+</style>
 </body>
 </html>

@@ -1,3 +1,12 @@
+// renderer.js
+
+// Import the function from icalHandler.js
+const icalHandler = require('./icalHandler.js');
+
+// Attach event listener to your button
+document.getElementById('generate-ical').addEventListener('click', icalHandler.generateICalFile);
+
+
 function hideAllForms() {
     const forms = document.querySelectorAll('div[id$="-form"]'); // Select all form divs
     forms.forEach(form => form.style.display = 'none'); // Hide each form
@@ -12,7 +21,30 @@ document.getElementById('preferred-start-time').addEventListener('change', funct
         startTimeSelect.value = "";
     }
 });
+document.getElementById('export-ical-form').addEventListener('submit', async function (e) {
+    e.preventDefault(); // Prevent form submission
 
+    // Fetch values from the form inputs
+    const calendarName = document.getElementById('calendar-name').value;
+    const calendarDescription = document.getElementById('calendar-description').value;
+
+    // Create an object to store the form data
+    const exportData = {
+        calendarName,
+        calendarDescription
+    };
+
+    console.log('Export iCal Options:', exportData);
+
+    // Fetch the CSV data
+    const csvData = await fetchCSVData('class-data.csv'); // Adjust the path accordingly
+
+    // Generate iCal file with the collected options and CSV data
+    const icalFile = generateICalFile(exportData, csvData);
+    
+    // Trigger download of the iCal file
+    downloadFile(icalFile, `${calendarName}.ics`, 'text/calendar');
+});
 // Function to fetch CSV data and parse it
 async function fetchCSVData(filePath) {
     const response = await fetch(filePath);
